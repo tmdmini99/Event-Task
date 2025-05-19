@@ -26,14 +26,17 @@ docker compose up -d
 init.js파일로 users, events, rewards, userEventLogs 컬렉션 생성 후 데이터 삽입
 
 
-### 2-1.로그인/ 유저 등록
+### 2-1. 로그인/ 유저 등록
 
 #### 터미널에서 미리 삽입 해둔 데이터로 로그인 실행
 
 ```bash
 curl -X POST http://localhost:3000/auth/login \
   -H "Content-Type: application/json" \
-  -d '{"name":"John Doe","password":"password"}'
+  -d '{
+    "name":"John Doe",
+    "password":"password"
+  }'
 ```
 
 
