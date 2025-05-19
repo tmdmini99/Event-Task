@@ -40,11 +40,8 @@ curl -X POST http://localhost:3000/auth/login \
 - _"<ACEESS_TOKEN>" 부분에 반환 된 토큰을 꼭 입력해주세요._
 ```bash
 curl -X POST http://localhost:3000/auth/register \
-
-  -H "Authorization: Bearer <ADMIN_ACCESS_TOKEN>" \
-
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
   -H "Content-Type: application/json" \
-
   -d '{
 
     "name": "newuser",
