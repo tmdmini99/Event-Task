@@ -5,13 +5,13 @@
 ```bash
 docker compose up -d
 ```
-도커 실행 시 백그라운 실행
+도커 실행 시 백그라운드 실행
 
 ## 서버 테스트
 
 init.js파일로 users, events, rewards, userEventLogs 컬렉션 생성 후 데이터 삽입
 
-### 로그인/ 유지 등록
+### 로그인/ 유저 등록
 
 터미널에서 미리 삽입 해둔 데이터로 로그인 실행
 
