@@ -1,5 +1,3 @@
-# Event-Task
-
 ## Docker-Compose 실행
 
 ```bash
@@ -7,9 +5,11 @@ docker compose up -d
 ```
 도커 실행 시 백그라운드 실행
 
+---
 ## 서버 테스트
 
 init.js파일로 users, events, rewards, userEventLogs 컬렉션 생성 후 데이터 삽입
+
 
 ### 로그인/ 유저 등록
 
@@ -128,6 +128,8 @@ curl -X POST http://localhost:3000/events/rewards/request \
 이벤트 활성 상태가 아닐 시 "이벤트가 활성 상태가 아닙니다." 표출 및 저장
 수량 부족 시 "수량 부족" 표출 및 저장
 
+---
+
 ## 겪은 고민
 
 ### 토큰 만료 시간
@@ -137,6 +139,8 @@ curl -X POST http://localhost:3000/events/rewards/request \
 ### 캐시 문제
 - 로컬에서 프로젝트 실행 시 캐시가 삭제되지 않고 남아 새롭게 변경한 부분이 반영되지 않은 문제가 있었습니다.
 - 이전 캐시를 삭제하여 문제를 해결했습니다.
+
+---
 
 ## 이벤트 설계 / 조건 검증 방식
 - auth-server, event-server는 무조건 gateway-server를 통해서만 접속이 가능하게 설계했습니다. 그 이유는 만약 auth-server, event-server가 포트번호 및 url이 노출 되었을 경우 jwt 및 role 인증 없이 바로 접근이 가능할 수도 있기 때문입니다. 또한 jwt토큰을 갈취하여 악용 할수도 있어 gateway-server를 통해서만 접근이 가능하게 설계했습니다. 도커 컴포즈 설정에서 expose을 사용했습니다.
