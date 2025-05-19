@@ -20,7 +20,7 @@
 ```bash
 docker compose up -d
 ```
-- 도커 실행 시 백그라운드 실행
+- 터미널에서 docker-compose 명령어 실행 시 백그라운드 실행
 
 ## 2. 서버 테스트
 
