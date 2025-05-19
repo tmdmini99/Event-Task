@@ -86,7 +86,7 @@ export class EventService {
         reason: '이벤트가 활성 상태가 아닙니다.',
         requestedAt: new Date(),
       });
-      throw new BadRequestException('Event is not active');
+      throw new BadRequestException('이벤트가 활성 상태가 아닙니다.');
     }
 
     if (now < new Date(event.startDate) || now > new Date(event.endDate)) {
@@ -98,7 +98,7 @@ export class EventService {
         reason: '이벤트 기간이 아닙니다.',
         requestedAt: new Date(),
       });
-      throw new BadRequestException('Event period is not valid');
+      throw new BadRequestException('이벤트 기간이 아닙니다.');
     }
 
     const userLogs = await this.userEventLogService.findByUserId(userId);
