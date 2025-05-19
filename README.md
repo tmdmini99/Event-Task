@@ -13,17 +13,18 @@ init.js파일로 users, events, rewards, userEventLogs 컬렉션 생성 후 데�
 
 ### 로그인/ 유저 등록
 
-터미널에서 미리 삽입 해둔 데이터로 로그인 실행
+#### 터미널에서 미리 삽입 해둔 데이터로 로그인 실행
 
 ```bash
 curl -X POST http://localhost:3000/auth/login \
   -H "Content-Type: application/json" \
   -d '{"name":"John Doe","password":"password"}'
 ```
-요청시 토큰 반환(백엔드 로직만 구현으로 토큰반환) (role : ADMIN)
+
+
+#### 요청시 토큰 반환(백엔드 로직만 구현으로 토큰반환) (role : ADMIN)
 반환 된 토큰으로 새로운 유저 등록
 _"<ACEESS_TOKEN>" 부분에 반환 된 토큰을 꼭 입력해주세요._
-
 ```bash
 curl -X POST http://localhost:3000/auth/register \
 
@@ -48,19 +49,19 @@ curl -X POST http://localhost:3000/auth/register \
 
 _"<ACEESS_TOKEN>" 부분에 반환 된 토큰을 꼭 입력해주세요._
 
-이벤트 전체 정보 조회
+#### 이벤트 전체 정보 조회
 ```bash
 curl -X GET "http://localhost:3000/events" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-특정 이벤트 1개 조회("<eventId>" 부분에 반환된 _id값을 입력해주세요.)
+#### 특정 이벤트 1개 조회("<eventId>" 부분에 반환된 _id값을 입력해주세요.)
 ```bash
 curl -X GET "http://localhost:3000/events/<eventId>" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-이벤트 등록
+#### 이벤트 등록
 
 ```bash
 curl -X POST http://localhost:3000/events \
@@ -86,13 +87,13 @@ curl -X POST http://localhost:3000/events \
 
 _"<ACEESS_TOKEN>" 부분에 반환 된 토큰을 꼭 입력해주세요._
 
-전체 보상 조회
+#### 전체 보상 조회
 ```bash
 curl -X GET "http://localhost:3000/events/rewards" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-특정 보상 조회("<eventId>" 부분에 반환된 _id값을 입력해주세요.)
+#### 특정 보상 조회("<eventId>" 부분에 반환된 _id값을 입력해주세요.)
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/?eventId=<eventId>" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
@@ -101,19 +102,20 @@ curl -X GET "http://localhost:3000/events/rewards/?eventId=<eventId>" \
 ### 보상 요청 조회/ 등록
 
 _"<ACEESS_TOKEN>" 부분에 반환 된 토큰을 꼭 입력해주세요._
-보상 요청 조회(role : user인 계정은 본인의 기록만 조회 가능, OPERATOR,AUDITOR,ADMIN은 전체 조회 가능)
+
+#### 보상 요청 조회(role : user인 계정은 본인의 기록만 조회 가능, OPERATOR,AUDITOR,ADMIN은 전체 조회 가능)
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/request" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-특정 event에 대한 보상 요청 조회("<eventId>" 부분에 반환된 _id값을 입력해주세요.)
+#### 특정 event에 대한 보상 요청 조회("<eventId>" 부분에 반환된 _id값을 입력해주세요.)
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/request?eventId=<eventId>" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-보상 요청 등록(userEventLogs에 대한 데이터를 미리 1개 넣어두었습니다.)
+#### 보상 요청 등록(userEventLogs에 대한 데이터를 미리 1개 넣어두었습니다.)
 ```bash
 curl -X POST http://localhost:3000/events/rewards/request \
   -H "Authorization: Bearer <ACCESS_TOKEN>"\
