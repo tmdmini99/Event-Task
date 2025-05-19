@@ -158,7 +158,10 @@ curl -X POST http://localhost:3000/events/rewards/request \
 ## 3. FAQ
 
 ### 3-1. 이벤트 설계
-- auth-server, event-server는 무조건 gateway-server를 통해서만 접속이 가능하게 설계했습니다. 그 이유는 만약 auth-server, event-server가 포트번호 및 url이 노출 되었을 경우 jwt 및 role 인증 없이 바로 접근이 가능할 수도 있기 때문입니다. 또한 jwt토큰을 갈취하여 악용 할수도 있어 gateway-server를 통해서만 접근이 가능하게 설계했습니다. docker-compose 설정에서 expose을 사용하여 컨터이너의 특정 포트를 외부로 노출하지 않고 다른 컨테이너가 내부에서 접근 할수 있도록 설정했습니다.
+- auth-server, event-server는 무조건 gateway-server를 통해서만 접속이 가능하게 설계했습니다.
+- 그 이유는 만약 auth-server, event-server가 포트번호 및 url이 노출 되었을 경우 jwt 및 role 인증 없이 바로 접근이 가능할 수도 있기 때문입니다.
+- 또한 jwt토큰을 갈취하여 악용 할수도 있어 gateway-server를 통해서만 접근이 가능하게 설계했습니다.
+- docker-compose 설정에서 expose을 사용하여 컨터이너의 특정 포트를 외부로 노출하지 않고 다른 컨테이너가 내부에서 접근 할수 있도록 설정했습니다.
 
 ### 3-2. 조건 검증 방식
 - 조건 검증 방식의 경우 guard를 만들어 controller에 접근 전 교차 검증을 통해 권한이 없거나 jwt토큰이 없을 경우 접속을 허용하지 않게 설계했습니다.
