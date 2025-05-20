@@ -6,41 +6,41 @@
 - [2. 설명 및 테스트](#2-설명-및-테스트)  
   - [a. 로그인 / 유저 등록](#a-로그인--유저-등록)  
     - [a-1. 로그인](#a-1-로그인)  
-      - [a-1-1. mac](#a-1-1-mac)  
-      - [a-1-2. window](#a-1-2-window)  
+      - [a-1-1. Mac](#a-1-1-Mac)  
+      - [a-1-2. Window](#a-1-2-Window)  
     - [a-2. 유저 등록](#a-2-유저-등록)  
-      - [a-2-1. mac](#a-2-1-mac)  
-      - [a-2-2. window](#a-2-2-window)  
+      - [a-2-1. Mac](#a-2-1-Mac)  
+      - [a-2-2. Window](#a-2-2-Window)  
   - [b. 이벤트 보기 / 등록](#b-이벤트-보기--등록)  
     - [b-1. 이벤트 전체 정보 조회](#b-1-이벤트-전체-정보-조회)  
-      - [b-1-1. mac](#b-1-1-mac)  
-      - [b-1-2. window](#b-1-2-window)  
+      - [b-1-1. Mac](#b-1-1-Mac)  
+      - [b-1-2. Window](#b-1-2-Window)  
     - [b-2. 특정 이벤트 1개 조회](#b-2-특정-이벤트-1개-조회)  
-      - [b-2-1. mac](#b-2-1-mac)  
-      - [b-2-2. window](#b-2-2-window)  
+      - [b-2-1. Mac](#b-2-1-Mac)  
+      - [b-2-2. Window](#b-2-2-Window)  
     - [b-3. 이벤트 등록](#b-3-이벤트-등록)  
-      - [b-3-1. mac](#b-3-1-mac)  
-      - [b-3-2. window](#b-3-2-window)  
+      - [b-3-1. Mac](#b-3-1-Mac)  
+      - [b-3-2. Window](#b-3-2-Window)  
   - [c. 보상 조회 / 등록](#c-보상-조회--등록)  
     - [c-1. 전체 보상 조회](#c-1-전체-보상-조회)  
-      - [c-1-1. mac](#c-1-1-mac)  
-      - [c-1-2. window](#c-1-2-window)  
+      - [c-1-1. Mac](#c-1-1-Mac)  
+      - [c-1-2. Window](#c-1-2-Window)  
     - [c-2. 특정 보상 조회](#c-2-특정-보상-조회)  
-      - [c-2-1. mac](#c-2-1-mac)  
-      - [c-2-2. window](#c-2-2-window)  
+      - [c-2-1. Mac](#c-2-1-Mac)  
+      - [c-2-2. Window](#c-2-2-Window)  
     - [c-3. 보상 등록](#c-3-보상-등록)  
-      - [c-3-1. mac](#c-3-1-mac)  
-      - [c-3-2. window](#c-3-2-window)  
+      - [c-3-1. Mac](#c-3-1-Mac)  
+      - [c-3-2. Window](#c-3-2-Window)  
   - [d. 보상 요청 조회 / 등록](#d-보상-요청-조회--등록)  
     - [d-1. 보상 요청 조회](#d-1-보상-요청-조회)  
-      - [d-1-1. mac](#d-1-1-mac)  
-      - [d-1-2. window](#d-1-2-window)  
+      - [d-1-1. Mac](#d-1-1-Mac)  
+      - [d-1-2. Window](#d-1-2-Window)  
     - [d-2. 특정 event에 대한 보상 요청 조회](#d-2-특정-event에-대한-보상-요청-조회)  
-      - [d-2-1. mac](#d-2-1-mac)  
-      - [d-2-2. window](#d-2-2-window)  
+      - [d-2-1. Mac](#d-2-1-Mac)  
+      - [d-2-2. Window](#d-2-2-Window)  
     - [d-3. 보상 요청 등록](#d-3-보상-요청-등록)  
-      - [d-3-1. mac](#d-3-1-mac)  
-      - [d-3-2. window](#d-3-2-window)  
+      - [d-3-1. Mac](#d-3-1-Mac)  
+      - [d-3-2. Window](#d-3-2-Window)  
 - [3. 추가 설명](#3-추가-설명)  
   - [a. 이벤트 설계](#a-이벤트-설계)  
   - [b. 조건 검증 방식](#b-조건-검증-방식)  
@@ -68,7 +68,7 @@ docker compose up -d
 
 #### a-1. 로그인
 
-##### a-1-1. mac
+##### a-1-1. Mac
 ```bash
 curl -X POST http://localhost:3000/auth/login \
   -H "Content-Type: application/json" \
@@ -77,7 +77,7 @@ curl -X POST http://localhost:3000/auth/login \
     "password":"password"
   }'
 ```
-##### a-1-2. window
+##### a-1-2. Window
 ```bash
 curl -X POST http://localhost:3000/auth/login -H "Content-Type: application/json" -d "{\"name\":\"John Doe\",\"password\":\"password\"}"
 ```
@@ -87,7 +87,7 @@ curl -X POST http://localhost:3000/auth/login -H "Content-Type: application/json
 
 #### a-2. 유저 등록
 
-##### a-2-1. mac
+##### a-2-1. Mac
 ```bash
 curl -X POST http://localhost:3000/auth/register \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
@@ -99,7 +99,7 @@ curl -X POST http://localhost:3000/auth/register \
   }'
 ```
 
-##### a-2-2. window
+##### a-2-2. Window
 ```bash
 curl -X POST http://localhost:3000/auth/register -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d "{\"name\": \"newuser\", \"password\": \"123456\", \"role\": \"USER\"}"
 ```
@@ -115,13 +115,13 @@ curl -X POST http://localhost:3000/auth/register -H "Authorization: Bearer <ACCE
 
 #### b-1. 이벤트 전체 정보 조회
 
-##### b-1-1. mac
+##### b-1-1. Mac
 ```bash
 curl -X GET "http://localhost:3000/events" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-##### b-1-2. window
+##### b-1-2. Window
 ```bash
 curl -X GET "http://localhost:3000/events" -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
@@ -129,22 +129,22 @@ curl -X GET "http://localhost:3000/events" -H "Authorization: Bearer <ACCESS_TOK
 
 #### b-2. 특정 이벤트 1개 조회
 
-##### b-2-1. mac
+##### b-2-1. Mac
 ```bash
 curl -X GET "http://localhost:3000/events/<eventId>" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-##### b-2-2. window
+##### b-2-2. Window
 ```bash
-curl -X GET "http://localhost:3000/events/682884b2ae290524d865d0fb" -H "Authorization: Bearer <ACCESS_TOKEN>"
+curl -X GET "http://localhost:3000/events/<eventId>" -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 - **"\<eventId>" 부분에 반환된 _id값 필수 입력**
 - 특정 이벤트 1개 정보 표출
 
 #### b-3. 이벤트 등록
 
-##### b-3-1. mac
+##### b-3-1. Mac
 ```bash
 curl -X POST http://localhost:3000/events \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
@@ -162,12 +162,12 @@ curl -X POST http://localhost:3000/events \
   }'
 ```
 
-##### b-3-2. window
+##### b-3-2. Window
 ```bash
 curl -X POST http://localhost:3000/events -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d "{\"title\": \"Invite Friend2\", \"description\": \"Reward for inviting friends\", \"startDate\": \"2025-05-19T00:00:00.000Z\", \"endDate\": \"2025-06-18T23:59:59.999Z\", \"status\": \"ACTIVE\", \"condition\": {\"type\": \"FRIEND_INVITED_COUNT\", \"value\": 1}}"
 
 ```
-- 이벤트 등록시 동일한 이벤트가 있을 시 "동일한 이벤트가 이미 존재합니다." 표출 (테스트코드에 2를 붙인 이유 : init.js으로 동일한 이벤트를 등록)
+- 이벤트 등록시 동일한 이벤트가 있을 시 "동일한 이벤트가 이미 존재합니다." 표출 (테스트코드에 2를 붙인 이유 : init.js으로 동일한 이벤트 등록)
 
 
 ### c. 보상 조회 / 등록
@@ -176,33 +176,33 @@ curl -X POST http://localhost:3000/events -H "Authorization: Bearer <ACCESS_TOKE
 
 #### c-1. 전체 보상 조회
 
-##### c-1-1. mac
+##### c-1-1. Mac
 ```bash
 curl -X GET "http://localhost:3000/events/rewards" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
-##### c-1-2. window
+##### c-1-2. Window
 ```bash
 curl -X GET "http://localhost:3000/events/rewards" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJzdWIiOiI2ODI4ODRiMmMyZjcyYjAxOWM2NWQwZmIiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDc3MDU1NjQsImV4cCI6MTc0Nzc5MTk2NH0.YV8-HB9rtTBWaeMIviSH0i7ZvNsrDvVzUoe6k-Wm8HE"
 ```
 
 #### c-2. 특정 보상 조회
 
-##### c-2-1. mac
+##### c-2-1. Mac
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/?eventId=<eventId>" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-##### c-2-2. window
+##### c-2-2. Window
 ```bash
-curl -X GET "http://localhost:3000/events/rewards/?eventId=682884b2ae290524d865d0fc" -H "Authorization: Bearer <ACCESS_TOKEN>"
+curl -X GET "http://localhost:3000/events/rewards/?eventId=<eventId>" -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 - **"\<eventId>" 부분에 반환된 _id값 필수 입력**
 
 #### c-3. 보상 등록
 
-##### c-3-1. mac
+##### c-3-1. Mac
 ```bash
 curl -X POST http://localhost:3000/events/rewards \
   -H "Content-Type: application/json" \
@@ -216,7 +216,7 @@ curl -X POST http://localhost:3000/events/rewards \
   }'
 ```
 
-##### c-3-2. window
+##### c-3-2. Window
 ```bash
 curl -X POST http://localhost:3000/events/rewards -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>" -d "{\"eventId\": \"682884b2ae290524d865d0fc\", \"name\": \"Special Reward\", \"quantity\": 10, \"type\": \"POINT\", \"value\": 100}"
 ```
@@ -228,13 +228,13 @@ curl -X POST http://localhost:3000/events/rewards -H "Content-Type: application/
 
 #### d-1. 보상 요청 조회
 
-##### d-1-1. mac
+##### d-1-1. Mac
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/request" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-##### d-1-2. window
+##### d-1-2. Window
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/request" -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
@@ -242,21 +242,21 @@ curl -X GET "http://localhost:3000/events/rewards/request" -H "Authorization: Be
 
 #### d-2. 특정 event에 대한 보상 요청 조회
 
-##### d-2-1. mac
+##### d-2-1. Mac
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/request?eventId=<eventId>" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-##### d-2-2. window
+##### d-2-2. Window
 ```bash
-curl -X GET "http://localhost:3000/events/rewards/request?eventId=682884b2ae290524d865d0fc" -H "Authorization: Bearer <ACCESS_TOKEN>"
+curl -X GET "http://localhost:3000/events/rewards/request?eventId=<eventId>" -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 - **"\<eventId>" 부분에 반환된 _id값 필수 입력**
 
 #### d-3. 보상 요청 등록
 
-##### d-3-1. mac
+##### d-3-1. Mac
 ```bash
 curl -X POST http://localhost:3000/events/rewards/request \
   -H "Authorization: Bearer <ACCESS_TOKEN>"\
@@ -267,7 +267,7 @@ curl -X POST http://localhost:3000/events/rewards/request \
   }'
 ```
 
-##### d-3-2. window
+##### d-3-2. Window
 ```bash
 curl -X POST http://localhost:3000/events/rewards/request -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d "{\"eventId\": \"682884b2ae290524d865d0fc\", \"rewardId\": \"682950901e36fdd41244d341\"}"
 ```
