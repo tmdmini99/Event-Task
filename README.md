@@ -96,7 +96,7 @@ curl -X GET "http://localhost:3000/events" -H "Authorization: Bearer <ACCESS_TOK
 
 #### 특정 이벤트 1개 조회
 
-1)mac
+1) mac
 ```bash
 curl -X GET "http://localhost:3000/events/<eventId>" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
@@ -111,7 +111,7 @@ curl -X GET "http://localhost:3000/events/682884b2ae290524d865d0fb" -H "Authoriz
 
 #### 이벤트 등록
 
-1)mac
+1) mac
 ```bash
 curl -X POST http://localhost:3000/events \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
@@ -143,7 +143,7 @@ curl -X POST http://localhost:3000/events -H "Authorization: Bearer <ACCESS_TOKE
 
 #### 전체 보상 조회
 
-1)mac
+1) mac
 ```bash
 curl -X GET "http://localhost:3000/events/rewards" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
@@ -155,7 +155,7 @@ curl -X GET "http://localhost:3000/events/rewards" -H "Authorization: Bearer eyJ
 
 #### 특정 보상 조회
 
-1)mac
+1) mac
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/?eventId=<eventId>" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
@@ -169,7 +169,7 @@ curl -X GET "http://localhost:3000/events/rewards/?eventId=682884b2ae290524d865d
 
 #### 보상 등록
 
-1)mac
+1) mac
 ```bash
 curl -X POST http://localhost:3000/events/rewards \
   -H "Content-Type: application/json" \
@@ -195,7 +195,7 @@ curl -X POST http://localhost:3000/events/rewards -H "Content-Type: application/
 
 #### 보상 요청 조회
 
-1)mac
+1) mac
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/request" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
@@ -209,7 +209,7 @@ curl -X GET "http://localhost:3000/events/rewards/request" -H "Authorization: Be
 
 #### 특정 event에 대한 보상 요청 조회
 
-1)mac
+1) mac
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/request?eventId=<eventId>" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
@@ -223,7 +223,7 @@ curl -X GET "http://localhost:3000/events/rewards/request?eventId=682884b2ae2905
 
 #### 보상 요청 등록
 
-1)mac
+1) mac
 ```bash
 curl -X POST http://localhost:3000/events/rewards/request \
   -H "Authorization: Bearer <ACCESS_TOKEN>"\
