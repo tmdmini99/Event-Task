@@ -27,13 +27,15 @@ docker compose up -d
 
 ## 2. 설명 및 테스트
 
-init.js파일로 users, events, rewards, userEventLogs 컬렉션 생성 후 데이터 삽입
+- init.js파일로 users, events, rewards, userEventLogs 컬렉션 생성 후 데이터 삽입
+- 코드 정렬을 위해 \를 넣었으나 window 명령어에서는 지원하지 않아 코드를 두개로 분리
 
 
 ### 2-1. 로그인/ 유저 등록
 
 #### 로그인
 
+1)mac
 ```bash
 curl -X POST http://localhost:3000/auth/login \
   -H "Content-Type: application/json" \
@@ -42,11 +44,17 @@ curl -X POST http://localhost:3000/auth/login \
     "password":"password"
   }'
 ```
+2) window
+```bash
+curl -X POST http://localhost:3000/auth/login -H "Content-Type: application/json" -d "{\"name\":\"John Doe\",\"password\":\"password\"}"
+```
+
 - 터미널에서 미리 삽입 해둔 데이터로 로그인 실행
 - 요청시 토큰 반환 (백엔드 로직만 구현으로 토큰반환, role : ADMIN)
 
 #### 유저 등록
 
+1)mac
 ```bash
 curl -X POST http://localhost:3000/auth/register \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
@@ -57,6 +65,12 @@ curl -X POST http://localhost:3000/auth/register \
     "role": "USER"
   }'
 ```
+
+2) window
+```bash
+curl -X POST http://localhost:3000/auth/register -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d "{\"name\": \"newuser\", \"password\": \"123456\", \"role\": \"USER\"}"
+```
+
 - **"<ACCESS_TOKEN>" 부분에 반환된 토큰 필수 입력**
 - 반환된 토큰으로 새로운 유저 등록
 - 성공시 입력한 데이터 표출
@@ -67,22 +81,37 @@ curl -X POST http://localhost:3000/auth/register \
 - **"<ACCESS_TOKEN>" 부분에 반환된 토큰 필수 입력**
 
 #### 이벤트 전체 정보 조회
+
+1)mac
 ```bash
 curl -X GET "http://localhost:3000/events" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
+
+2) window
+```bash
+curl -X GET "http://localhost:3000/events" -H "Authorization: Bearer <ACCESS_TOKEN>"
+```
 - 이벤트에 대한 모든 정보 표출
 
 #### 특정 이벤트 1개 조회
+
+1)mac
 ```bash
 curl -X GET "http://localhost:3000/events/<eventId>" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
+```
+
+2) window
+```bash
+curl -X GET "http://localhost:3000/events/682884b2ae290524d865d0fb" -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 - **"\<eventId>" 부분에 반환된 _id값 필수 입력**
 - 특정 이벤트 1개 정보 표출
 
 #### 이벤트 등록
 
+1)mac
 ```bash
 curl -X POST http://localhost:3000/events \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
@@ -98,6 +127,11 @@ curl -X POST http://localhost:3000/events \
       "value": 1
     }
   }'
+```
+
+2) window
+```bash
+curl -X POST http://localhost:3000/events -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d "{\"title\": \"Invite Friend2\", \"description\": \"Reward for inviting friends\", \"startDate\": \"2025-05-19T00:00:00.000Z\", \"endDate\": \"2025-06-18T23:59:59.999Z\", \"status\": \"ACTIVE\", \"condition\": {\"type\": \"FRIEND_INVITED_COUNT\", \"value\": 1}}"
 
 ```
 - 이벤트 등록시 동일한 이벤트가 있을 시 "동일한 이벤트가 이미 존재합니다." 표출 (테스트코드에 2를 붙인 이유 : init.js으로 동일한 이벤트를 등록)
@@ -108,37 +142,88 @@ curl -X POST http://localhost:3000/events \
 - **"<ACCESS_TOKEN>" 부분에 반환된 토큰 필수 입력**
 
 #### 전체 보상 조회
+
+1)mac
 ```bash
 curl -X GET "http://localhost:3000/events/rewards" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
+2) window
+```bash
+curl -X GET "http://localhost:3000/events/rewards" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJzdWIiOiI2ODI4ODRiMmMyZjcyYjAxOWM2NWQwZmIiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDc3MDU1NjQsImV4cCI6MTc0Nzc5MTk2NH0.YV8-HB9rtTBWaeMIviSH0i7ZvNsrDvVzUoe6k-Wm8HE"
+```
 
 #### 특정 보상 조회
+
+1)mac
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/?eventId=<eventId>" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
+
+2) window
+```bash
+curl -X GET "http://localhost:3000/events/rewards/?eventId=682884b2ae290524d865d0fc" -H "Authorization: Bearer <ACCESS_TOKEN>"
+```
 - **"\<eventId>" 부분에 반환된 _id값 필수 입력**
+
+#### 보상 등록
+
+1)mac
+```bash
+curl -X POST http://localhost:3000/events/rewards \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <ACCESS_TOKEN>"\
+  -d '{
+    "eventId": "682884b2ae290524d865d0fc",
+    "name": "Special Reward",
+    "quantity": 10,
+    "type": "POINT",
+    "value": 100
+  }'
+```
+
+2) window
+```bash
+curl -X POST http://localhost:3000/events/rewards -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>" -d "{\"eventId\": \"682884b2ae290524d865d0fc\", \"name\": \"Special Reward\", \"quantity\": 10, \"type\": \"POINT\", \"value\": 100}"
+```
+- 권한이 있는 OPERATOR, ADMIN만 등록 가능
 
 ### 2-4. 보상 요청 조회/ 등록
 
 - **"<ACCESS_TOKEN>" 부분에 반환된 토큰 필수 입력**
 
 #### 보상 요청 조회
+
+1)mac
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/request" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
+
+2) window
+```bash
+curl -X GET "http://localhost:3000/events/rewards/request" -H "Authorization: Bearer <ACCESS_TOKEN>"
+```
 - role이 user로 설정된 계정은 본인의 기록만 조회, OPERATOR,AUDITOR,ADMIN은 전체 조회
 
 #### 특정 event에 대한 보상 요청 조회
+
+1)mac
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/request?eventId=<eventId>" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
+
+2) window
+```bash
+curl -X GET "http://localhost:3000/events/rewards/request?eventId=682884b2ae290524d865d0fc" -H "Authorization: Bearer <ACCESS_TOKEN>"
+```
 - **"\<eventId>" 부분에 반환된 _id값 필수 입력**
 
 #### 보상 요청 등록
+
+1)mac
 ```bash
 curl -X POST http://localhost:3000/events/rewards/request \
   -H "Authorization: Bearer <ACCESS_TOKEN>"\
@@ -147,6 +232,11 @@ curl -X POST http://localhost:3000/events/rewards/request \
     "eventId": "682884b2ae290524d865d0fc",
     "rewardId": "682950901e36fdd41244d341"
   }'
+```
+
+2) window
+```bash
+curl -X POST http://localhost:3000/events/rewards/request -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d "{\"eventId\": \"682884b2ae290524d865d0fc\", \"rewardId\": \"682950901e36fdd41244d341\"}"
 ```
 - userEventLogs에 대한 default data
 - 중복 보상 요청 시 "이미 보상 요청을 했습니다." 표출 및 상태 실패로 저장
