@@ -238,7 +238,7 @@ curl -X GET "http://localhost:3000/events/rewards/request" \
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/request" -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
-- role이 user로 설정된 계정은 본인의 기록만 조회, OPERATOR,AUDITOR,ADMIN은 전체 조회
+- role이 user로 설정된 계정은 본인의 기록만 조회, OPERATOR, AUDITOR, ADMIN은 전체 조회
 
 #### d-2. 특정 event에 대한 보상 요청 조회
 
