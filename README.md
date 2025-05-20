@@ -5,10 +5,18 @@
 - [1. 실행 방법](#1-실행-방법)
 - [2. 설명 및 테스트](#2-설명-및-테스트)
   - [a. 로그인 / 유저 등록](#a-로그인--유저-등록)
+    - [i. mac](i-mac)
+    - [ii. window](ii-window)   
   - [b. 이벤트 보기 / 등록](#b-이벤트-보기--등록)
+    - [i. mac](i-mac)
+    - [ii. window](ii-window)    
   - [c. 보상 조회 / 등록](#c-보상-조회--등록)
+    - [i. mac](i-mac)
+    - [ii. window](ii-window)    
   - [d. 보상 요청 조회 / 등록](#d-보상-요청-조회--등록)
-- [3. FAQ](#3-faq)
+    - [i. mac](i-mac)
+    - [ii. window](ii-window)    
+- [3. 추가 설명](#3-추가-설명)
   - [a. 이벤트 설계](#a-이벤트-설계)
   - [b. 조건 검증 방식](#b-조건-검증-방식)
 - [4. 프로젝트 작성 중 겪은 고민](#4-프로젝트-작성-중-겪은-고민)
@@ -245,7 +253,7 @@ curl -X POST http://localhost:3000/events/rewards/request -H "Authorization: Bea
 - 수량 부족 시 "수량 부족" 표출 및 저장 상태 실패로 저장
 
 
-## 3. FAQ
+## 3. 추가 설명
 
 ### a. 이벤트 설계
 - auth-server, event-server는 무조건 gateway-server를 통해서만 접속이 가능하게 설계했습니다.
