@@ -66,6 +66,8 @@ docker compose up -d
 
 ### a. 로그인 / 유저 등록
 
+- **"<ACCESS_TOKEN>" 부분에 반환된 토큰 필수 입력**
+  
 #### a-1. 로그인
 
 ##### a-1-1. Mac
@@ -81,7 +83,6 @@ curl -X POST http://localhost:3000/auth/login \
 ```bash
 curl -X POST http://localhost:3000/auth/login -H "Content-Type: application/json" -d "{\"name\":\"John Doe\",\"password\":\"password\"}"
 ```
-
 - 터미널에서 미리 삽입 해둔 데이터로 로그인 실행
 - 요청시 토큰 반환 (백엔드 로직만 구현으로 토큰반환, role : ADMIN)
 
@@ -104,7 +105,6 @@ curl -X POST http://localhost:3000/auth/register \
 curl -X POST http://localhost:3000/auth/register -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d "{\"name\": \"newuser\", \"password\": \"123456\", \"role\": \"USER\"}"
 ```
 
-- **"<ACCESS_TOKEN>" 부분에 반환된 토큰 필수 입력**
 - 반환된 토큰으로 새로운 유저 등록
 - 성공시 입력한 데이터 표출
 - 권한이 없는 일반 유저 토큰으로 유저 삽입 시 권한이 없습니다. 메세지 표출
