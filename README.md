@@ -60,7 +60,7 @@ docker compose up -d
 
 ## 2. 설명 및 테스트
 
-- init.js파일로 users, events, rewards, userEventLogs 컬렉션 생성 후 데이터 삽입
+- init-auth.js, init-event.js파일로 users, events, rewards, userEventLogs 컬렉션 생성 후 데이터 삽입
 - 코드 정렬을 위해 \를 넣었으나 window 명령어에서는 지원하지 않아 코드를 두개로 분리
 
 
@@ -112,6 +112,7 @@ curl -X POST http://localhost:3000/auth/register -H "Authorization: Bearer <ACCE
 ### b. 이벤트 보기 / 등록
 
 - **"<ACCESS_TOKEN>" 부분에 반환된 토큰 필수 입력**
+- **"\<eventId>" 부분에 반환된 _id값 필수 입력**
 
 #### b-1. 이벤트 전체 정보 조회
 
@@ -139,7 +140,6 @@ curl -X GET "http://localhost:3000/events/<eventId>" \
 ```bash
 curl -X GET "http://localhost:3000/events/<eventId>" -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
-- **"\<eventId>" 부분에 반환된 _id값 필수 입력**
 - 특정 이벤트 1개 정보 표출
 
 #### b-3. 이벤트 등록
@@ -167,12 +167,13 @@ curl -X POST http://localhost:3000/events \
 curl -X POST http://localhost:3000/events -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d "{\"title\": \"Invite Friend2\", \"description\": \"Reward for inviting friends\", \"startDate\": \"2025-05-19T00:00:00.000Z\", \"endDate\": \"2025-06-18T23:59:59.999Z\", \"status\": \"ACTIVE\", \"condition\": {\"type\": \"FRIEND_INVITED_COUNT\", \"value\": 1}}"
 
 ```
-- 이벤트 등록시 동일한 이벤트가 있을 시 "동일한 이벤트가 이미 존재합니다." 표출 (테스트코드에 2를 붙인 이유 : init.js으로 동일한 이벤트 등록)
+- 이벤트 등록시 동일한 이벤트가 있을 시 "동일한 이벤트가 이미 존재합니다." 표출 (테스트코드에 2를 붙인 이유 : init-event.js으로 동일한 이벤트 등록)
 
 
 ### c. 보상 조회 / 등록
 
 - **"<ACCESS_TOKEN>" 부분에 반환된 토큰 필수 입력**
+- **"\<eventId>" 부분에 반환된 _id값 필수 입력**
 
 #### c-1. 전체 보상 조회
 
@@ -198,7 +199,7 @@ curl -X GET "http://localhost:3000/events/rewards/?eventId=<eventId>" \
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/?eventId=<eventId>" -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
-- **"\<eventId>" 부분에 반환된 _id값 필수 입력**
+
 
 #### c-3. 보상 등록
 
@@ -225,6 +226,7 @@ curl -X POST http://localhost:3000/events/rewards -H "Content-Type: application/
 ### d. 보상 요청 조회 / 등록
 
 - **"<ACCESS_TOKEN>" 부분에 반환된 토큰 필수 입력**
+- **"\<eventId>" 부분에 반환된 _id값 필수 입력**
 
 #### d-1. 보상 요청 조회
 
@@ -252,7 +254,6 @@ curl -X GET "http://localhost:3000/events/rewards/request?eventId=<eventId>" \
 ```bash
 curl -X GET "http://localhost:3000/events/rewards/request?eventId=<eventId>" -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
-- **"\<eventId>" 부분에 반환된 _id값 필수 입력**
 
 #### d-3. 보상 요청 등록
 
@@ -281,13 +282,13 @@ curl -X POST http://localhost:3000/events/rewards/request -H "Authorization: Bea
 ## 3. 추가 설명
 
 ### a. 이벤트 설계
-- auth-server, event-server는 무조건 gateway-server를 통해서만 접속이 가능하게 설계했습니다.
-- 그 이유는 만약 auth-server, event-server가 포트번호 및 url이 노출 되었을 경우 jwt 및 role 인증 없이 바로 접근이 가능할 수도 있기 때문입니다.
-- 또한 jwt토큰을 갈취하여 악용 할수도 있어 gateway-server를 통해서만 접근이 가능하게 설계했습니다.
-- docker-compose 설정에서 expose을 사용하여 컨터이너의 특정 포트를 외부로 노출하지 않고 다른 컨테이너가 내부에서 접근 할수 있도록 설정했습니다.
+- Auth-server, Event-server는 무조건 Gateway-server를 통해서만 접속이 가능하게 설계했습니다.
+- 그 이유는 만약 Auth-server, Event-server가 포트번호 및 Url이 노출 되었을 경우 Jwt 및 Role 인증 없이 바로 접근이 가능할 수도 있기 때문입니다.
+- 또한 Jwt토큰을 갈취하여 악용 할수도 있어 Gateway-server를 통해서만 접근이 가능하게 설계했습니다.
+- Docker-Compose 설정에서 Expose을 사용하여 컨터이너의 특정 포트를 외부로 노출하지 않고 다른 컨테이너가 내부에서 접근 할수 있도록 설정했습니다.
 
 ### b. 조건 검증 방식
-- 조건 검증 방식의 경우 guard를 만들어 controller에 접근 전 교차 검증을 통해 권한이 없거나 jwt토큰이 없을 경우 접속을 허용하지 않게 설계했습니다.
+- 조건 검증 방식의 경우 Guard를 만들어 Controller에 접근 전 교차 검증을 통해 권한이 없거나 Jwt토큰이 없을 경우 접속을 허용하지 않게 설계했습니다.
 
 
 ## 4. 프로젝트 작성 중 겪은 고민
