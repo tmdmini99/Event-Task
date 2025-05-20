@@ -16,7 +16,12 @@ export const EventSchema = new Schema({
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
   status: { type: String, enum: ['ACTIVE', 'INACTIVE'], default: 'ACTIVE' },
-});
+  },
+  {
+    timestamps: { createdAt: true, updatedAt: false },
+  }
+
+);
 
 export interface Event extends Document {
   title: string;
@@ -28,4 +33,6 @@ export interface Event extends Document {
   startDate: Date;
   endDate: Date;
   status: 'ACTIVE' | 'INACTIVE';
+  createdAt?: Date;
+  updatedAt?: Date;
 }

@@ -47,7 +47,7 @@ export class EventService {
 
   async createReward(createRewardDto: RewardDto) {
     const event = await this.eventModelService.findById(createRewardDto.eventId);
-    if (!event) throw new NotFoundException('Event not found');
+    if (!event) throw new NotFoundException('이벤트를 찾지 못했습니다.');
 
     return this.rewardService.create({
       ...createRewardDto,
@@ -58,10 +58,10 @@ export class EventService {
   async requestReward(dto: RewardRequestDto & { userId: string }) {
     const { userId, eventId, rewardId } = dto;
     const event = await this.eventModelService.findById(eventId);
-    if (!event) throw new NotFoundException('Event not found');
+    if (!event) throw new NotFoundException('이벤트를 찾지 못했습니다.');
 
     const reward = await this.rewardService.findById(rewardId);
-    if (!reward) throw new NotFoundException('Reward not found');
+    if (!reward) throw new NotFoundException('이벤트를 찾지 못했습니다.');
 
     const existingRequest = await this.rewardRequestService.findSuccessRequest(userId, event.id, reward.id);
     if (existingRequest) {

@@ -38,8 +38,7 @@ export class AuthService {
     };
     const expiresIn = Number(this.configService.get<string>('JWT_EXPIRATION_TIME')) || 3600;
     const accessToken = this.jwtService.sign(payload, { expiresIn });
-    console.log('ex!!!!!! : ', expiresIn);
-    console.log('토큰 발급 성공2222222:', accessToken);
+    console.log('토큰 발급 성공:', accessToken);
     return { accessToken };
   }
 
