@@ -35,7 +35,7 @@ docker compose up -d
 
 #### 로그인
 
-1)mac
+1) mac
 ```bash
 curl -X POST http://localhost:3000/auth/login \
   -H "Content-Type: application/json" \
@@ -54,7 +54,7 @@ curl -X POST http://localhost:3000/auth/login -H "Content-Type: application/json
 
 #### 유저 등록
 
-1)mac
+1) mac
 ```bash
 curl -X POST http://localhost:3000/auth/register \
   -H "Authorization: Bearer <ACCESS_TOKEN>" \
@@ -82,7 +82,7 @@ curl -X POST http://localhost:3000/auth/register -H "Authorization: Bearer <ACCE
 
 #### 이벤트 전체 정보 조회
 
-1)mac
+1) mac
 ```bash
 curl -X GET "http://localhost:3000/events" \
   -H "Authorization: Bearer <ACCESS_TOKEN>"
