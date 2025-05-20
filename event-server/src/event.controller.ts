@@ -51,16 +51,12 @@ export class EventController {
   }
 
   @Post('rewards/request')
-  @UseGuards(RolesGuard)
-  @Roles('USER', 'ADMIN')
   async requestReward(@Body() dto: RewardRequestDto, @Req() req: Request) {
     console.log('req.user:', req.user);
     const currentUser = req.user as { userId: string }; 
     return this.eventService.requestReward({ ...dto, userId: currentUser.userId });
   }
 
-  @UseGuards(RolesGuard)
-  @Roles('USER', 'ADMIN')
   @Get('rewards/request')
   async getRewardRequests(
     @Req() req: Request,
